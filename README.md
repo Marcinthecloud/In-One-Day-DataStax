@@ -1,6 +1,6 @@
 # Solr Amazon Book Demo
-This is a quick and dirty demo to get you start with Solr. 
-With this dataset, you can run geospatial searches, Solr joins, text searches, and faceted searches. 
+This is a quick and dirty demo to get you started with DSE Search. 
+With this dataset, you can run geospatial searches, joins, text searches, and faceted searches. 
 
 The dataset includes click stream data, books/categories, and ranks. 
 
@@ -10,7 +10,7 @@ The dataset includes click stream data, books/categories, and ranks.
 * [DataStax Enterprise 4.7.3 or greater](https://www.datastax.com/downloads) 
 
 #####How-to: 
-1. Start DataStax Enterprise in Solr mode
+1. Start DataStax Enterprise in search mode
   * ```for tarball installs: bin/dse cassandra -s```
   * ```for package installs: set SOLR=1 in the dse.default file and run: service dse start```
 2. Run solr_dataloader.py
