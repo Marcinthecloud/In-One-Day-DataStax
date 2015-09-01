@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema name="autoSolrSchema" version="1.5">
+<types>
+<fieldType class="org.apache.solr.schema.StrField" name="StrField"/>
+<fieldType class="org.apache.solr.schema.TrieIntField" name="TrieIntField"/>
+</types>
+<fields>
+<field indexed="true" multiValued="false" name="asin" stored="true" type="StrField"/>
+<field indexed="true" multiValued="false" name="rank" stored="true" type="TrieIntField"/>
+<field indexed="true" multiValued="false" name="category" stored="true" type="StrField"/>
+</fields>
+<uniqueKey>(asin,category)</uniqueKey>
+</schema>

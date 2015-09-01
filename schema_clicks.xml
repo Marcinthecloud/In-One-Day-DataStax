@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema name="autoSolrSchema" version="1.5">
+<types>
+<fieldType class="org.apache.solr.schema.TextField" name="TextField">
+<analyzer>
+<tokenizer class="solr.StandardTokenizerFactory"/>
+<filter class="solr.LowerCaseFilterFactory"/>
+</analyzer>
+</fieldType>
+<fieldType class="org.apache.solr.schema.TrieDoubleField" name="TrieDoubleField"/>
+<fieldType class="org.apache.solr.schema.StrField" name="StrField"/>
+<fieldType class="org.apache.solr.schema.UUIDField" name="UUIDField"/>
+<fieldType name="loc" class="solr.LatLonType" subFieldSuffix="_coordinate"/>
+</types>
+<fields>
+<field indexed="true" multiValued="false" name="ip" stored="true" type="StrField"/>
+<field indexed="true" multiValued="false" name="postal_code" stored="true" type="StrField"/>
+<field indexed="true" multiValued="false" name="location" stored="true" type="loc"/>
+<field indexed="true" multiValued="false" name="location_0_coordinate" stored="true" type="TrieDoubleField"/>
+<field indexed="true" multiValued="false" name="metro_code" stored="true" type="StrField"/>
+<field indexed="true" multiValued="false" name="region" stored="true" type="StrField"/>
+<field indexed="true" multiValued="false" name="country" stored="true" type="StrField"/>
+<field indexed="true" multiValued="false" name="city" stored="true" type="StrField"/>
+<field indexed="true" multiValued="false" name="asin" stored="true" type="StrField"/>
+<field indexed="true" multiValued="false" name="location_1_coordinate" stored="true" type="TrieDoubleField"/>
+<field indexed="true" multiValued="false" name="loc_id" stored="true" type="TextField" omitNorms="true" termVectors="false"/>
+<field indexed="true" multiValued="false" name="area_code" stored="true" type="StrField"/>
+<field indexed="true" multiValued="false" name="user" stored="true" type="UUIDField"/>
+<field indexed="true" multiValued="false" name="seq" stored="true" type="UUIDField"/>
+</fields>
+<uniqueKey>(asin,seq,user)</uniqueKey>
+</schema>

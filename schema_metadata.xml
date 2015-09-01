@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema name="autoSolrSchema" version="1.5">
+<types>
+<fieldType class="org.apache.solr.schema.StrField" name="StrField"/>
+<fieldType class="org.apache.solr.schema.TextField" name="TextField">
+<analyzer>
+<tokenizer class="solr.StandardTokenizerFactory"/>
+<filter class="solr.LowerCaseFilterFactory"/>
+<filter class="solr.PorterStemFilterFactory"/>
+</analyzer>
+</fieldType>
+<fieldType class="org.apache.solr.schema.TrieDoubleField" name="TrieDoubleField"/>
+</types>
+<fields>
+<field indexed="true" multiValued="false" name="asin" stored="true" type="StrField"/>
+<field indexed="true" multiValued="true" name="buy_after_viewing" stored="true" type="TextField"/>
+<field indexed="true" multiValued="false" name="imurl" stored="true" type="TextField"/>
+<field indexed="true" multiValued="true" name="also_bought" stored="true" type="TextField"/>
+<field indexed="true" multiValued="true" name="categories" stored="true" type="TextField"/>
+<field indexed="true" multiValued="false" name="price" stored="true" type="TrieDoubleField"/>
+<field indexed="true" multiValued="false" name="title" stored="true" type="TextField"/>
+</fields>
+<uniqueKey>asin</uniqueKey>
+</schema>
