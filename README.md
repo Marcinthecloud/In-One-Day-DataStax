@@ -22,9 +22,9 @@ The dataset includes click stream data, books/categories, and ranks.
 #####Examples Queries: 
 
 ```
-SELECT * FROM metadata WHERE solr_query='{"q":"title:Noir~", "fq":"categories:Books", "sort":"title asc"}'  limit 10;
+SELECT * FROM amazon.metadata WHERE solr_query='{"q":"title:Noir~", "fq":"categories:Books", "sort":"title asc"}'  limit 10;
 
-SELECT * FROM metadata WHERE solr_query='{"q":"title:Noir~", "facet":{"field":"categories"}}'  limit 10;
+SELECT * FROM amazon.metadata WHERE solr_query='{"q":"title:Noir~", "facet":{"field":"categories"}}'  limit 10;
 
 SELECT * FROM amazon.clicks WHERE solr_query='{"q":"asin:*", "fq":"+{!geofilt pt=\"37.7484,-122.4156\" sfield=location d=1}"}' limit 10;
 
