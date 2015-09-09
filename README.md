@@ -4,6 +4,8 @@ With this dataset, you can run geospatial searches, joins, text searches, and fa
 
 The dataset includes click stream data, books/categories, and ranks. 
 
+A special thank you to Matt Stump for helping put this together.
+
 #####Prerequisites 
 * Python 2.7+
 * [DataStax Python Driver](https://github.com/datastax/python-driver) 
