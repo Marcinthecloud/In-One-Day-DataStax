@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema name="autoSolrSchema" version="1.5">
+  <types>
+    <fieldType class="org.apache.solr.schema.StrField" name="StrField"/>
+    <fieldType name="autocomplete_edge" class="solr.TextField">
+	  <analyzer type="index">
+		<tokenizer class="solr.KeywordTokenizerFactory"/>
+		<filter class="solr.LowerCaseFilterFactory"/>
+		<filter class="solr.PatternReplaceFilterFactory" pattern="([\.,;:-_])" replacement=" " replace="all"/>
+		<filter class="solr.EdgeNGramFilterFactory" maxGramSize="30" minGramSize="1"/>
+		<filter class="solr.PatternReplaceFilterFactory" pattern="([^\w\d\*æøåÆØÅ ])" replacement="" replace="all"/>
+	  </analyzer>
+	  <analyzer type="query">
+		<tokenizer class="solr.KeywordTokenizerFactory"/>
+		<filter class="solr.LowerCaseFilterFactory"/>
+		<filter class="solr.PatternReplaceFilterFactory" pattern="([\.,;:-_])" replacement=" " replace="all"/>
+		<filter class="solr.PatternReplaceFilterFactory" pattern="([^\w\d\*æøåÆØÅ ])" replacement="" replace="all"/>
+		<filter class="solr.PatternReplaceFilterFactory" pattern="^(.{30})(.*)?" replacement="$1" replace="all"/>
+	  </analyzer>
+	</fieldType>
+
+    <fieldType class="org.apache.solr.schema.TextField" name="TextField">
+      <analyzer>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.KeywordRepeatFilterFactory"/>
+        <filter class="solr.PorterStemFilterFactory"/>
+        <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+      </analyzer>
+    </fieldType>
+    <fieldType class="org.apache.solr.schema.TrieDoubleField" name="TrieDoubleField"/>
+  </types>
+  <fields>
+    <field indexed="true" multiValued="false" name="asin" stored="true" type="StrField"/>
+    <field indexed="true" multiValued="true" name="buy_after_viewing" stored="true" type="TextField"/>
+    <field indexed="true" multiValued="false" name="imurl" stored="true" type="TextField"/>
+    <field indexed="true" multiValued="true" name="also_bought" stored="true" type="TextField"/>
+    <field indexed="true" multiValued="true" name="categories" stored="true" type="TextField"/>
+    <field indexed="true" multiValued="false" name="price" stored="true" type="TrieDoubleField"/>
+    <field indexed="true" multiValued="false" name="title" stored="true" type="TextField"/>
+    <field indexed="true" multiValued="false" name="textsuggest" stored="false" type="autocomplete_edge"/>
+    <copyField source="title" dest="textsuggest" />
+  </fields>
+  <uniqueKey>asin</uniqueKey>
+</schema>
